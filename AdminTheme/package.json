@@ -1,0 +1,43 @@
+{
+    "name": "admintheme",
+    "version": "1.0.0",
+    "keywords": [
+        "util",
+        "functional",
+        "server",
+        "client",
+        "browser"
+    ],
+    "browserslist": [
+        "last 1 major version",
+        ">= 1%",
+        "Chrome >= 45",
+        "Firefox >= 38",
+        "Edge >= 12",
+        "Explorer >= 10",
+        "iOS >= 9",
+        "Safari >= 9",
+        "Android >= 4.4",
+        "Opera >= 30"
+    ],
+    "author": "Dimitrios Gerontopoulos",
+    "contributors": [],
+    "dependencies": {
+        "autoprefixer": "^8.6.4",
+        "bootstrap": "^4.1.1",
+        "clean-css-cli": "^4.1.11",
+        "jquery": "^3.3.1",
+        "node-sass": "^4.9.0",
+        "popper.js": "^1.14.3",
+        "postcss": "^6.0.23"
+    },
+    "devDependencies": {},
+    "scripts": {
+  "css:lint": "stylelint --config build/.stylelintrc --syntax scss \"scss/**/*.scss\" --cache --cache-location \"build/.stylelintcache/\"",
+  "css:prefix": "postcss --config postcss.config.js --replace public_html\\css\\*.css public_html\\css\\!*.min.css",
+  "css:compile": "node-sass --output-style expanded --source-map true --source-map-contents true --precision 6 public_html\\scss\\main.scss public_html\\css\\main.css",
+  "css:minify": "cleancss --level 1 --source-map --source-map-inline-sources --output public_html\\css\\main.min.css public_html\\css\\main.css",
+  "css": "npm css:lint && npm css:compile && npm css:prefix && npm css:minify",
+  "css:watch": "watch 'npm css' scss"
+}
+}
